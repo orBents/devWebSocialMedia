@@ -5,7 +5,7 @@ import Grupos from '../views/Grupos.vue'
 import Perfil from '../views/Perfil.vue'
 import SignIn from '../views/Sign-in.vue'
 import SignUp from '../views/Sign-up.vue'
-import Timeline from '../views/Timeline.vue';
+import Timeline from '../views/Timeline.vue'
 
 Vue.use(VueRouter)
 
