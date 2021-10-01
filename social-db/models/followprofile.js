@@ -4,14 +4,14 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    Following-Id: {
+    Following_Id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: false,
+      autoIncrement: true,
       comment: null,
-      field: "Following-Id"
+      field: "Following_Id"
     },
     Profile_ProfileID: {
       type: DataTypes.INTEGER,

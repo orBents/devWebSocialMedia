@@ -4,7 +4,7 @@
       <b-navbar-nav>
         <b-nav-item to='/'>Home</b-nav-item>
         <b-nav-item to='/grupos'>Grupos</b-nav-item>
-        <b-nav-item to=''>Coração</b-nav-item>
+        <b-nav-item to=''>Post</b-nav-item>
         <b-nav-item to='/perfil'>Perfil</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
