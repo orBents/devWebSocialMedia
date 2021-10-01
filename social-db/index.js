@@ -6,7 +6,9 @@ const profileRoute = require("./routes/profile.route.js");
 const postRoute = require("./routes/post.route.js");
 const commentRoute = require("./routes/comment.route.js");
 const followprofileRoute = require("./routes/followprofile.route.js");
+const groupRoute = require("./routes/group.route.js");
 const groupmemberRoute = require("./routes/groupmember.route.js");
+const grouppostRoute = require("./routes/grouppost.route.js");
 
 
 const app = express();
@@ -21,7 +23,9 @@ app.use(profileRoute);
 app.use(postRoute);
 app.use(commentRoute);
 app.use(followprofileRoute);
+app.use(groupRoute);
 app.use(groupmemberRoute);
+app.use(grouppostRoute);
 
 //Inicialização do servidor
 app.listen(8888, (request, response) =>{

@@ -1,6 +1,6 @@
 const model = require("../models");
 
-const Groupmember = model.comment_model;
+const Groupmember = model.groupmember_model;
 
 function createGroupmember(req, res) {
     Groupmember.create({
