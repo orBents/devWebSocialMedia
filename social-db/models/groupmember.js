@@ -4,55 +4,55 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    Profile_ProfileID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: null,
-      primaryKey: true,
-      autoIncrement: false,
-      comment: null,
-      field: "Profile_ProfileID",
-      references: {
-        key: "ProfileID",
-        model: "profile_model"
-      }
-    },
-    Group_GroupID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: null,
-      primaryKey: true,
-      autoIncrement: false,
-      comment: null,
-      field: "Group_GroupID",
-      references: {
-        key: "GroupID",
-        model: "group_model"
-      }
-    },
-    IsAdmin: {
+    isAdmin: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "IsAdmin"
+      field: "isAdmin"
+    },
+    Profile_profileId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: null,
+      primaryKey: true,
+      autoIncrement: false,
+      comment: null,
+      field: "Profile_profileId",
+      references: {
+        key: "profileId",
+        model: "profile_model"
+      }
+    },
+    Group_groupId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: null,
+      primaryKey: true,
+      autoIncrement: false,
+      comment: null,
+      field: "Group_groupId",
+      references: {
+        key: "groupId",
+        model: "group_model"
+      }
     }
   };
   const options = {
     tableName: "groupmember",
     comment: "",
     indexes: [{
-      name: "fk_Profile_has_Group_Group1_idx",
+      name: "fk_GroupMember_Profile1_idx",
       unique: false,
       type: "BTREE",
-      fields: ["Group_GroupID"]
+      fields: ["Profile_profileId"]
     }, {
-      name: "fk_Profile_has_Group_Profile1_idx",
+      name: "fk_GroupMember_Group1_idx",
       unique: false,
       type: "BTREE",
-      fields: ["Profile_ProfileID"]
+      fields: ["Group_groupId"]
     }]
   };
   const GroupmemberModel = sequelize.define("groupmember_model", attributes, options);

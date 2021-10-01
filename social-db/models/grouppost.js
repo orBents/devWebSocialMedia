@@ -4,52 +4,52 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    GroupPostID: {
+    groupPostId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: false,
       comment: null,
-      field: "GroupPostID"
+      field: "groupPostId"
     },
-    Group_GroupID: {
+    Post_postId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: null,
+      primaryKey: true,
+      autoIncrement: false,
+      comment: null,
+      field: "Post_postId",
+      references: {
+        key: "postId",
+        model: "post_model"
+      }
+    },
+    Group_groupId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Group_GroupID",
+      field: "Group_groupId",
       references: {
-        key: "GroupID",
+        key: "groupId",
         model: "group_model"
       }
     },
-    Profile_ProfileID: {
+    Profile_profileId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Profile_ProfileID",
+      field: "Profile_profileId",
       references: {
-        key: "ProfileID",
+        key: "profileId",
         model: "profile_model"
-      }
-    },
-    Post_PostID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "Post_PostID",
-      references: {
-        key: "PostID",
-        model: "post_model"
       }
     }
   };
@@ -57,20 +57,20 @@ module.exports = sequelize => {
     tableName: "grouppost",
     comment: "",
     indexes: [{
+      name: "fk_GroupPost_Post1_idx",
+      unique: false,
+      type: "BTREE",
+      fields: ["Post_postId"]
+    }, {
       name: "fk_GroupPost_Group1_idx",
       unique: false,
       type: "BTREE",
-      fields: ["Group_GroupID"]
+      fields: ["Group_groupId"]
     }, {
       name: "fk_GroupPost_Profile1_idx",
       unique: false,
       type: "BTREE",
-      fields: ["Profile_ProfileID"]
-    }, {
-      name: "fk_GroupPost_Post1_idx",
-      unique: false,
-      type: "BTREE",
-      fields: ["Post_PostID"]
+      fields: ["Profile_profileId"]
     }]
   };
   const GrouppostModel = sequelize.define("grouppost_model", attributes, options);

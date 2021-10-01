@@ -4,61 +4,61 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    PostID: {
+    postId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: false,
       comment: null,
-      field: "PostID"
+      field: "postId"
     },
-    Title: {
+    title: {
       type: DataTypes.STRING(100),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Title"
+      field: "title"
     },
-    ImageURL: {
+    imageURL: {
       type: DataTypes.STRING(300),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "ImageURL"
+      field: "imageURL"
     },
-    DatePublished: {
+    datePublished: {
       type: DataTypes.DATE,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "DatePublished"
+      field: "datePublished"
     },
-    Likes: {
+    likes: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Likes"
+      field: "likes"
     },
-    Profile_ProfileID: {
+    Profile_profileId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Profile_ProfileID",
+      field: "Profile_profileId",
       references: {
-        key: "ProfileID",
+        key: "profileId",
         model: "profile_model"
       }
     }
@@ -70,7 +70,7 @@ module.exports = sequelize => {
       name: "fk_Post_Profile1_idx",
       unique: false,
       type: "BTREE",
-      fields: ["Profile_ProfileID"]
+      fields: ["Profile_profileId"]
     }]
   };
   const PostModel = sequelize.define("post_model", attributes, options);

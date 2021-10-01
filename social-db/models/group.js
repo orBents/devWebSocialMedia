@@ -4,41 +4,41 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    GroupID: {
+    groupId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: false,
       comment: null,
-      field: "GroupID"
+      field: "groupId"
     },
-    Name: {
+    name: {
       type: DataTypes.STRING(45),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Name"
+      field: "name"
     },
-    Description: {
+    description: {
       type: DataTypes.STRING(200),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Description"
+      field: "description"
     },
-    DateCreated: {
+    dateCreated: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "DateCreated"
+      field: "dateCreated"
     }
   };
   const options = {

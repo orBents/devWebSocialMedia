@@ -18,6 +18,7 @@ function getById(req, res) {
 }
 
 async function updateUser(req, res) {
+  
   await User.update(
     {
         userId: req.body.userId,
@@ -33,6 +34,7 @@ async function updateUser(req, res) {
       },
     }
   );
+  User.findByPk(req.params.id).then((result) => res.json(result));
 }
 
 async function deleteUser(req, res) {

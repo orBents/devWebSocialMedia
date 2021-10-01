@@ -4,43 +4,43 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    CommentID: {
+    commentId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: false,
       comment: null,
-      field: "CommentID"
+      field: "commentId"
     },
-    Content: {
+    content: {
       type: DataTypes.STRING(250),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Content"
+      field: "content"
     },
-    DatePublished: {
+    datePublished: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "DatePublished"
+      field: "datePublished"
     },
-    Post_PostID: {
+    Post_postId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Post_PostID",
+      field: "Post_postId",
       references: {
-        key: "PostID",
+        key: "postId",
         model: "post_model"
       }
     }
@@ -52,7 +52,7 @@ module.exports = sequelize => {
       name: "fk_Comment_Post1_idx",
       unique: false,
       type: "BTREE",
-      fields: ["Post_PostID"]
+      fields: ["Post_postId"]
     }]
   };
   const CommentModel = sequelize.define("comment_model", attributes, options);

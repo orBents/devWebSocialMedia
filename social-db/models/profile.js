@@ -4,61 +4,61 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    ProfileID: {
+    profileId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: false,
       comment: null,
-      field: "ProfileID"
+      field: "profileId"
     },
-    Name: {
+    name: {
       type: DataTypes.STRING(45),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Name"
+      field: "name"
     },
-    DateOfBirth: {
+    dateOfBirth: {
       type: DataTypes.DATEONLY,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "DateOfBirth"
+      field: "dateOfBirth"
     },
-    Gender: {
+    gender: {
       type: DataTypes.STRING(20),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Gender"
+      field: "gender"
     },
-    Phone: {
+    phone: {
       type: DataTypes.STRING(16),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Phone"
+      field: "phone"
     },
-    User_UserID: {
+    User_userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "User_UserID",
+      field: "User_userId",
       references: {
-        key: "UserID",
+        key: "userId",
         model: "user_model"
       }
     }
@@ -67,10 +67,10 @@ module.exports = sequelize => {
     tableName: "profile",
     comment: "",
     indexes: [{
-      name: "fk_Profile_User_idx",
+      name: "fk_Profile_User1_idx",
       unique: false,
       type: "BTREE",
-      fields: ["User_UserID"]
+      fields: ["User_userId"]
     }]
   };
   const ProfileModel = sequelize.define("profile_model", attributes, options);

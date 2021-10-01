@@ -4,59 +4,59 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    UserID: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: false,
       comment: null,
-      field: "UserID"
+      field: "userId"
     },
-    UserName: {
+    userName: {
       type: DataTypes.STRING(45),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "UserName"
+      field: "userName"
     },
-    Email: {
+    email: {
       type: DataTypes.STRING(45),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Email"
+      field: "email"
     },
-    Password: {
+    password: {
       type: DataTypes.STRING(45),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Password"
+      field: "password"
     },
-    AccountStatus: {
+    accountStatus: {
       type: DataTypes.STRING(20),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "AccountStatus"
+      field: "accountStatus"
     },
-    IsAdmin: {
+    isAdmin: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "IsAdmin"
+      field: "isAdmin"
     }
   };
   const options = {
