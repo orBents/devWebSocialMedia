@@ -49,14 +49,14 @@ module.exports = sequelize => {
       comment: null,
       field: "likes"
     },
-    Profile_profileId: {
+    profileProfileId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Profile_profileId",
+      field: "profileProfileId",
       references: {
         key: "profileId",
         model: "profile_model"
@@ -70,7 +70,7 @@ module.exports = sequelize => {
       name: "fk_Post_Profile1_idx",
       unique: false,
       type: "BTREE",
-      fields: ["Profile_profileId"]
+      fields: ["profileProfileId"]
     }]
   };
   const PostModel = sequelize.define("post_model", attributes, options);

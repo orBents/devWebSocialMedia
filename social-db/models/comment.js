@@ -31,14 +31,14 @@ module.exports = sequelize => {
       comment: null,
       field: "datePublished"
     },
-    Post_postId: {
+    postPostId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "Post_postId",
+      field: "postPostId",
       references: {
         key: "postId",
         model: "post_model"
@@ -52,7 +52,7 @@ module.exports = sequelize => {
       name: "fk_Comment_Post1_idx",
       unique: false,
       type: "BTREE",
-      fields: ["Post_postId"]
+      fields: ["postPostId"]
     }]
   };
   const CommentModel = sequelize.define("comment_model", attributes, options);

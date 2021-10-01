@@ -9,7 +9,7 @@ function createProfile(req, res) {
     dateOfBirth: req.body.dateOfBirth,
     gender: req.body.gender,
     phone: req.body.phone,
-    UserUserId: req.body.UserUserId,
+    userUserId: req.body.userUserId,
   }).then((result) => res.json(result));
 }
 
@@ -25,7 +25,7 @@ async function updateProfile(req, res) {
       dateOfBirth: req.body.dateOfBirth,
       gender: req.body.gender,
       phone: req.body.phone,
-      UserUserId: req.body.UserUserId,
+      userUserId: req.body.userUserId,
     },
     {
       where: {
@@ -33,7 +33,7 @@ async function updateProfile(req, res) {
       },
     }
   );
-  User.findByPk(req.params.id).then((result) => res.json(result));
+  Profile.findByPk(req.params.id).then((result) => res.json(result));
 }
 
 async function deleteProfile(req, res) {

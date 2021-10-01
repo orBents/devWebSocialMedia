@@ -13,27 +13,27 @@ module.exports = sequelize => {
       comment: null,
       field: "following_Id"
     },
-    profile_ProfileId: {
+    profileProfileId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "profile_ProfileId",
+      field: "profileProfileId",
       references: {
         key: "profileId",
         model: "profile_model"
       }
     },
-    follower_Id: {
+    followerId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "follower_Id",
+      field: "followerId",
       references: {
         key: "profileId",
         model: "profile_model"
@@ -47,12 +47,12 @@ module.exports = sequelize => {
       name: "fk_FollowProfile_Profile1_idx",
       unique: false,
       type: "BTREE",
-      fields: ["profile_ProfileId"]
+      fields: ["profileProfileId"]
     }, {
       name: "fk_FollowProfile_Profile2_idx",
       unique: false,
       type: "BTREE",
-      fields: ["follower_Id"]
+      fields: ["followerId"]
     }]
   };
   const FollowprofileModel = sequelize.define("followprofile_model", attributes, options);

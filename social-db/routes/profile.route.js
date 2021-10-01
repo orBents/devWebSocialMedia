@@ -1,9 +1,5 @@
 const express = require("express");
 const profile = require("../controllers/profile.controller.js");
-//Rotas
-const userRoute = require("./routes/user.route");
-const profileRoute = require("./routes/profile.route");
-
 
 const router = express.Router();
 

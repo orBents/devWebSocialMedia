@@ -49,14 +49,14 @@ module.exports = sequelize => {
       comment: null,
       field: "phone"
     },
-    User_userId: {
+    userUserId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "User_userId",
+      field: "userUserId",
       references: {
         key: "userId",
         model: "user_model"
@@ -70,7 +70,7 @@ module.exports = sequelize => {
       name: "fk_Profile_User1_idx",
       unique: false,
       type: "BTREE",
-      fields: ["User_userId"]
+      fields: ["userUserId"]
     }]
   };
   const ProfileModel = sequelize.define("profile_model", attributes, options);
