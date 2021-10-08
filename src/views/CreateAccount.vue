@@ -2,12 +2,12 @@
     <section class="main-create-account">
         <h1>Criar Conta</h1>
 
-        <form class="form-create-account">
-            <input v-model="username" placeholder="Usuário">
-            <input v-model="email" placeholder="Seu E-mail">
-            <input v-model="senha" placeholder="Senha">
-            <input v-model="senhaConfirm" placeholder="Confirme sua senha">
-            <button class="button-light-blue">Criar Conta</button>
+        <form class="form-create-account" @submit="createAccount()" method="post">
+            <input id="username" v-model="login.username" placeholder="Usuário">
+            <input id="email" v-model="login.email" placeholder="Seu E-mail">
+            <input id="password" v-model="login.password" placeholder="Senha">
+            <input placeholder="Confirme sua senha">
+            <button class="button-light-blue" type="submit">Criar Conta</button>
             <div class="message-login">
                 <p>Já possui uma conta?</p>
                 <a v-bind:href="'/sign-in/'">Log In</a>
@@ -19,8 +19,42 @@
 
 <script>
 export default {
-    name: "CreateAccount",
+    name: "createAccount",
+    data(){
+        return{
+            login:{
+                username:"",
+                email:"",
+                password:""
+            }
+        };
+    },
+    methods: {
+        
+        createAccount(event) {
+
+            event.preventDefault();
+
+            let dataCreate = {
+            userName: this.login.username,
+            email: this.login.email,
+            password: this.login.password,
+            }
+            this.$http.post("/user", dataCreate)
+            .then(response =>{
+               // console.log(this.$router);
+                console.log(response.data);
+                this.$router.push("/sign-in")
+            })
+            .catch(errors=>{
+                console.log("Falha no Login!");
+                alert("Falha no Login!");
+                console.log(errors);
+            });
+        },
+    }
 };
+
 </script>
 
 <style>
