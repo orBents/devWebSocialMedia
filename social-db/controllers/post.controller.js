@@ -42,6 +42,7 @@ async function deletePost(req, res) {
       postId: req.params.id,
     },
   });
+  Post.findByPk(req.params.id).then((result) => res.json(result));
 }
 
 module.exports = { createPost, getById, updatePost, deletePost };
