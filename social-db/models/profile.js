@@ -9,7 +9,7 @@ module.exports = sequelize => {
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: false,
+      autoIncrement: true,
       comment: null,
       field: "profileId"
     },
@@ -49,14 +49,14 @@ module.exports = sequelize => {
       comment: null,
       field: "phone"
     },
-    userUserId: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "userUserId",
+      field: "userId",
       references: {
         key: "userId",
         model: "user_model"
@@ -67,10 +67,10 @@ module.exports = sequelize => {
     tableName: "profile",
     comment: "",
     indexes: [{
-      name: "fk_Profile_User1_idx",
+      name: "userId",
       unique: false,
       type: "BTREE",
-      fields: ["userUserId"]
+      fields: ["userId"]
     }]
   };
   const ProfileModel = sequelize.define("profile_model", attributes, options);

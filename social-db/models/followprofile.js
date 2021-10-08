@@ -4,23 +4,23 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    following_Id: {
+    followId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: false,
+      autoIncrement: true,
       comment: null,
-      field: "following_Id"
+      field: "followId"
     },
-    profileProfileId: {
+    profileId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "profileProfileId",
+      field: "profileId",
       references: {
         key: "profileId",
         model: "profile_model"
@@ -44,12 +44,12 @@ module.exports = sequelize => {
     tableName: "followprofile",
     comment: "",
     indexes: [{
-      name: "fk_FollowProfile_Profile1_idx",
+      name: "profileId",
       unique: false,
       type: "BTREE",
-      fields: ["profileProfileId"]
+      fields: ["profileId"]
     }, {
-      name: "fk_FollowProfile_Profile2_idx",
+      name: "followerId",
       unique: false,
       type: "BTREE",
       fields: ["followerId"]

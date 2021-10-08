@@ -1,50 +1,71 @@
-const model = require("../models");
+const models = require("../models");
 
-const User = model.user_model;
+const User = models.user_model;
+const Profile = models.profile_model;
 
-function createUser(req, res) {
-  User.create({
-    userId: req.body.userId,
-    userName: req.body.userName,
-    email: req.body.email,
-    password: req.body.password,
-    accountStatus: req.body.accountStatus,
-    isAdmin: req.body.isAdmin,
-  }).then((result) => res.json(result));
+User.hasOne(Profile, { as: "Profile", foreignKey: "profileId" });
+Profile.belongsTo(User, { as: "User", foreignKey: "userId" })
+
+const createUser = async (req, res) => {
+  try {
+    const user = await User.create(req.body);
+    return res.status(200).json(user);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 }
 
-function getById(req, res) {
-    User.findByPk(req.params.id).then((result) => res.json(result));
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.findAll({include: ['Profile']});
+    return res.status(200).json({ users });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 }
 
-async function updateUser(req, res) {
-  
-  await User.update(
-    {
-        userId: req.body.userId,
-        userName: req.body.userName,
-        email: req.body.email,
-        password: req.body.password,
-        accountStatus: req.body.accountStatus,
-        isAdmin: req.body.isAdmin
-    },
-    {
-      where: {
-        userId: req.params.id,
-      },
+const getById = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id, {include: ['Profile']});
+    if(user) return res.status(200).json(user);
+
+    throw new Error('User not found');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+
+const updateUser = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+
+    if(user){
+      await User.update(req.body, {
+        where: { userId: req.params.id }
+      });
+
+      const updatedUser = await User.findByPk(req.params.id);
+      return res.status(200).json(updatedUser)
     }
-  );
-  User.findByPk(req.params.id).then((result) => res.json(result));
-}
+    throw new Error('User not found');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
 
-async function deleteUser(req, res) {
-  await User.destroy({
-    where: {
-      userId: req.params.id,
-    },
-  });
+const deleteUser = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id);
+    if(user){
+      await User.destroy({
+        where: { userId: req.params.id }
+      });
+      return res.status(200).send("User deleted");
+    }
+    throw new Error("User not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
 
-  User.findByPk(req.params.id).then((result) => res.json(result));
-}
-
-module.exports = { createUser, getById, updateUser, deleteUser };
+module.exports = { createUser, getAllUsers, getById, updateUser, deleteUser };

@@ -2,43 +2,57 @@ const model = require("../models");
 
 const Comment = model.comment_model;
 
-function createComment(req, res) {
-    Comment.create({
-        commentId:req.body.commentId,
-        content: req.body.content,
-        datePublished: req.body.datePublished,
-        postPostId: req.body.postPostId,
-    }).then((result) => res.json(result));
+const createComment = async (req, res) => {
+  try {
+    const comment = await Comment.create(req.body);
+    return res.status(200).json(comment);
+  } catch (error) {
+    return res.status(500).send(error.message);
   }
-  
-  function getById(req, res) {
-    Comment.findByPk(req.params.id).then((result) => res.json(result));
+}
+
+const getById = async (req, res) => {
+  try {
+    const comment = await Comment.findByPk(req.params.id);
+    if(comment) return res.status(200).json(comment);
+
+    throw new Error('Comment not found');
+  } catch (error) {
+    return res.status(500).send(error.message);
   }
-  
-  async function updateComment(req, res) {
-    await Comment.update(
-      {
-          commentId:req.body.commentId,
-          content: req.body.content,
-          datePublished: req.body.datePublished,
-          postPostId: req.body.postPostId,
-      },
-      {
-        where: {
-            commentId: req.params.id,
-        },
-      }
-    );
-    Comment.findByPk(req.params.id).then((result) => res.json(result));
+}
+
+const updateComment = async (req, res) => {
+  try {
+    const comment = await Comment.findByPk(req.params.id);
+
+    if(comment){
+      await Comment.update(req.body, {
+        where: { commentId: req.params.id }
+      });
+
+      const updatedComment = await Comment.findByPk(req.params.id);
+      return res.status(200).json(updatedComment)
+    }
+    throw new Error('Comment not found');
+  } catch (error) {
+    return res.status(500).send(error.message);
   }
-  
-  async function deleteComment(req, res) {
-    await Comment.destroy({
-      where: {
-        commentId: req.params.id,
-      },
-    });
-    Comment.findByPk(req.params.id).then((result) => res.json(result));
+};
+
+const deleteComment = async (req, res) => {
+  try {
+    const comment = await Comment.findByPk(req.params.id);
+    if(comment){
+      await Comment.destroy({
+        where: { commentId: req.params.id }
+      });
+      return res.status(200).send("Comment deleted");
+    }
+    throw new Error("Comment not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
   }
+};
   
-  module.exports = { createComment, getById, updateComment, deleteComment };
+module.exports = { createComment, getById, updateComment, deleteComment };

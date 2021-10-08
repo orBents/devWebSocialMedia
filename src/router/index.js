@@ -6,6 +6,7 @@ import Perfil from '../views/Perfil.vue'
 import SignIn from '../views/Sign-in.vue'
 import SignUp from '../views/Sign-up.vue'
 import Timeline from '../views/Timeline.vue'
+import CreateAccount from '../views/CreateAccount.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/sign-in',
     name: 'SignIn',
     component: SignIn
+  },
+  {
+    path: '/create-account',
+    name: 'CreateAccount',
+    component: CreateAccount
   },
   {
     path: '/sign-up',
