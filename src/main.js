@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import axios from "axios";
 import api from './api.js'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
@@ -15,6 +16,8 @@ Vue.use(IconsPlugin)
 
 // $ é uma convenção que o Vue usa para indicar que aquela
 //variavel estará diponível em todas as instâncias do Vue.
+Vue.prototype.$http = axios;
+
 Vue.prototype.$http = api;
 
 Vue.config.productionTip = false

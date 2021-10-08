@@ -11,6 +11,6 @@ app.use(cors());
 app.use("/", routes);
 
 //Inicialização do servidor
-app.listen(8081, (request, response) =>{
-    console.log("Estamos no ar e ao vivo!");
+app.listen(8888, (request, response) =>{
+    console.log("Estamos no ar!");
 });

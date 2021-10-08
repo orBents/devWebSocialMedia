@@ -2,12 +2,12 @@
     <section class="main-create-account">
         <h1>Criar Conta</h1>
 
-        <form class="form-create-account" @submit="createAccount()" method="post">
+        <form class="form-create-account">
             <input id="username" v-model="login.username" placeholder="Usuário">
             <input id="email" v-model="login.email" placeholder="Seu E-mail">
             <input id="password" v-model="login.password" placeholder="Senha">
             <input placeholder="Confirme sua senha">
-            <button class="button-light-blue" type="submit">Criar Conta</button>
+            <button class="button-light-blue" v-on:click="createAccount()">Criar Conta</button>
             <div class="message-login">
                 <p>Já possui uma conta?</p>
                 <a v-bind:href="'/sign-in/'">Log In</a>
@@ -44,11 +44,11 @@ export default {
             .then(response =>{
                // console.log(this.$router);
                 console.log(response.data);
-                this.$router.push("/sign-in")
+                this.$router.push("/")
             })
             .catch(errors=>{
-                console.log("Falha no Login!");
-                alert("Falha no Login!");
+                console.log("Falha no Cadastro!");
+                alert("Falha no cadastro!");
                 console.log(errors);
             });
         },
