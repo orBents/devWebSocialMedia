@@ -1,42 +1,85 @@
-const model = require("../models");
+const models = require("../models");
+const Groupmember = models.groupmember_model;
 
-const Groupmember = model.groupmember_model;
+const createGroupmember = async (req, res) => {
+  try {
+    const groupMember = await Groupmember.create(req.body);
+    return res.status(200).json(groupMember);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
 
-function createGroupmember(req, res) {
-    Groupmember.create({
-        profileProfileId:req.body.profileProfileId,
-        groupGroupIdt: req.body.groupGroupId,
-        isAdmin: req.body.isAdmin,
-    }).then((result) => res.json(result));
-  }
-  
-  function getById(req, res) {
-    Groupmember.findByPk(req.params.id).then((result) => res.json(result));
-  }
-  
-  async function updateGroupmember(req, res) {
-    await Groupmember.update(
-      {
-        profileProfileId:req.body.profileProfileId,
-        groupGroupIdt: req.body.groupGroupId,
-        isAdmin: req.body.isAdmin,
-      },
-      {
-        where: {
-            profileProfileId: req.params.id,
-        },
-      }
-    );
-    Groupmember.findByPk(req.params.id).then((result) => res.json(result));
-  }
-  
-  async function deleteGroupmember(req, res) {
-    await Groupmember.destroy({
+const getAllGroups = async (req, res) => {
+  try {
+    const groups = await Groupmember.findAll({
       where: {
-        profileProfileId: req.params.id,
+        profileId: req.params.id
       },
+      include: "Group",
     });
-    Groupmember.findByPk(req.params.id).then((result) => res.json(result));
+    return res.status(200).json({groups});
+  } catch (error) {
+    return res.status(500).send(error.message);
   }
-  
-  module.exports = { createGroupmember, getById, updateGroupmember, deleteGroupmember };
+}
+
+const getAllGroupmembers = async (req, res) => {
+  try {
+    const group = await Groupmember.findAll({
+      where: {
+        groupId: req.params.id
+      },
+      include: "Profile",
+    });
+    return res.status(200).json(group);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+
+const getById = async (req, res) => {
+  try {
+    const groupMember = await Groupmember.findByPk(req.params.id);
+    if(groupMember) return res.status(200).json(groupMember);
+
+    throw new Error('GroupMember not found');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+
+const updateGroupmember = async (req, res) => {
+  try {
+    const groupMember = await Groupmember.findByPk(req.params.id);
+
+    if(groupMember){
+      await Groupmember.update(req.body, {
+        where: { groupMemberId: req.params.id }
+      });
+
+      const updatedGroupMember = await Groupmember.findByPk(req.params.id);
+      return res.status(200).json(updatedGroupMember)
+    }
+    throw new Error('GroupMember not found');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
+const deleteGroupmember = async (req, res) => {
+  try {
+    const groupMember = await Groupmember.findByPk(req.params.id);
+    if(groupMember){
+      await Groupmember.destroy({
+        where: { groupMemberId: req.params.id }
+      });
+      return res.status(200).send("GroupMember deleted");
+    }
+    throw new Error("GroupMember not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
+module.exports = { createGroupmember, getAllGroupmembers, getAllGroups, getById, updateGroupmember, deleteGroupmember };

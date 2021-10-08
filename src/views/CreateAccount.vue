@@ -2,6 +2,7 @@
     <section class="main-create-account">
         <h1>Criar Conta</h1>
 
+<<<<<<< HEAD
         <form class="form-create-account">
             <input v-model="username" placeholder="Usuário">
             <input v-model="email" placeholder="Seu E-mail">
@@ -11,6 +12,17 @@
             <div class="message-login">
                 <p>Já possui uma conta?</p>
                 <a v-bind:href="'#/sign-in/'">Log In</a>
+=======
+        <form class="form-create-account" @submit="createAccount()" method="post">
+            <input id="username" v-model="login.username" placeholder="Usuário">
+            <input id="email" v-model="login.email" placeholder="Seu E-mail">
+            <input id="password" v-model="login.password" placeholder="Senha">
+            <input placeholder="Confirme sua senha">
+            <button class="button-light-blue" type="submit">Criar Conta</button>
+            <div class="message-login">
+                <p>Já possui uma conta?</p>
+                <a v-bind:href="'/sign-in/'">Log In</a>
+>>>>>>> 017a9c66e239d6a616befa06bda79853982c9322
             </div>            
         </form>
     </section>
@@ -19,8 +31,47 @@
 
 <script>
 export default {
+<<<<<<< HEAD
     name: "CreateAccount",
 };
+=======
+    name: "createAccount",
+    data(){
+        return{
+            login:{
+                username:"",
+                email:"",
+                password:""
+            }
+        };
+    },
+    methods: {
+        
+        createAccount(event) {
+
+            event.preventDefault();
+
+            let dataCreate = {
+            userName: this.login.username,
+            email: this.login.email,
+            password: this.login.password,
+            }
+            this.$http.post("/user", dataCreate)
+            .then(response =>{
+               // console.log(this.$router);
+                console.log(response.data);
+                this.$router.push("/sign-in")
+            })
+            .catch(errors=>{
+                console.log("Falha no Login!");
+                alert("Falha no Login!");
+                console.log(errors);
+            });
+        },
+    }
+};
+
+>>>>>>> 017a9c66e239d6a616befa06bda79853982c9322
 </script>
 
 <style>

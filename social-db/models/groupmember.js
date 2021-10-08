@@ -4,27 +4,23 @@ const {
 
 module.exports = sequelize => {
   const attributes = {
-    profileProfileId: {
+    groupMemberId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: false,
+      autoIncrement: true,
       comment: null,
-      field: "profileProfileId",
-      references: {
-        key: "profileId",
-        model: "profile_model"
-      }
+      field: "groupMemberId"
     },
-    groupGroupId: {
+    groupId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
-      primaryKey: true,
+      primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "groupGroupId",
+      field: "groupId",
       references: {
         key: "groupId",
         model: "group_model"
@@ -38,21 +34,34 @@ module.exports = sequelize => {
       autoIncrement: false,
       comment: null,
       field: "isAdmin"
+    },
+    profileId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: null,
+      field: "profileId",
+      references: {
+        key: "profileId",
+        model: "profile_model"
+      }
     }
   };
   const options = {
     tableName: "groupmember",
     comment: "",
     indexes: [{
-      name: "fk_GroupMember_Profile1_idx",
+      name: "groupId",
       unique: false,
       type: "BTREE",
-      fields: ["profileProfileId"]
+      fields: ["groupId"]
     }, {
-      name: "fk_GroupMember_Group1_idx",
+      name: "profileId",
       unique: false,
       type: "BTREE",
-      fields: ["groupGroupId"]
+      fields: ["profileId"]
     }]
   };
   const GroupmemberModel = sequelize.define("groupmember_model", attributes, options);

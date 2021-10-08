@@ -9,7 +9,7 @@ module.exports = sequelize => {
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
-      autoIncrement: false,
+      autoIncrement: true,
       comment: null,
       field: "postId"
     },
@@ -22,14 +22,14 @@ module.exports = sequelize => {
       comment: null,
       field: "title"
     },
-    imageURL: {
+    image: {
       type: DataTypes.STRING(300),
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "imageURL"
+      field: "image"
     },
     datePublished: {
       type: DataTypes.DATE,
@@ -49,17 +49,30 @@ module.exports = sequelize => {
       comment: null,
       field: "likes"
     },
-    profileProfileId: {
+    profileId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "profileProfileId",
+      field: "profileId",
       references: {
         key: "profileId",
         model: "profile_model"
+      }
+    },
+    groupId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: null,
+      field: "groupId",
+      references: {
+        key: "groupId",
+        model: "group_model"
       }
     }
   };
@@ -67,10 +80,15 @@ module.exports = sequelize => {
     tableName: "post",
     comment: "",
     indexes: [{
-      name: "fk_Post_Profile1_idx",
+      name: "profileId",
       unique: false,
       type: "BTREE",
-      fields: ["profileProfileId"]
+      fields: ["profileId"]
+    }, {
+      name: "groupId",
+      unique: false,
+      type: "BTREE",
+      fields: ["groupId"]
     }]
   };
   const PostModel = sequelize.define("post_model", attributes, options);

@@ -2,46 +2,80 @@ const model = require("../models");
 
 const Post = model.post_model;
 
-function createPost(req, res) {
-  Post.create({
-    postId:req.body.postId,
-    title: req.body.title,
-    imageURL: req.body.imageURL,
-    datePublished: req.body.datePublished,
-    likes: req.body.likes,
-    profileProfileId: req.body.profileProfileId,
-  }).then((result) => res.json(result));
+const createPost = async (req, res) => {
+  try {
+    const post = await Post.create(req.body);
+    return res.status(200).json(post);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 }
 
-function getById(req, res) {
-    Post.findByPk(req.params.id).then((result) => res.json(result));
+const getById = async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.params.id);
+    if(post) return res.status(200).json(post);
+
+    throw new Error('Post not found');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 }
 
-async function updatePost(req, res) {
-  await Post.update(
-    {
-        postId:req.body.postId,
-        title: req.body.title,
-        imageURL: req.body.imageURL,
-        datePublished: req.body.datePublished,
-        likes: req.body.likes,
-        profileProfileId: req.body.profileProfileId,
-    },
-    {
+const getAllPosts = async (req, res) => {
+  try {
+    const posts = await Post.findAll();
+    return res.status(200).json({ posts });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+
+const getAllGroupPosts = async (req, res) => {
+  try {
+    const posts = await Post.findAll({
       where: {
-        postId: req.params.id,
-      },
+        groupId: req.params.id
+      }
+    });
+    return res.status(200).json({ posts });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+
+
+const updatePost = async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.params.id);
+
+    if(post){
+      await Post.update(req.body, {
+        where: { postId: req.params.id }
+      });
+
+      const updatedPost = await Post.findByPk(req.params.id);
+      return res.status(200).json(updatedPost)
     }
-  );
-  Post.findByPk(req.params.id).then((result) => res.json(result));
-}
+    throw new Error('Post not found');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
 
-async function deletePost(req, res) {
-  await Post.destroy({
-    where: {
-      postId: req.params.id,
-    },
-  });
-}
+const deletePost = async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.params.id);
+    if(post){
+      await Post.destroy({
+        where: { postId: req.params.id }
+      });
+      return res.status(200).send("Post deleted");
+    }
+    throw new Error("Post not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
 
-module.exports = { createPost, getById, updatePost, deletePost };
+module.exports = { createPost, getById, getAllPosts, getAllGroupPosts, updatePost, deletePost };

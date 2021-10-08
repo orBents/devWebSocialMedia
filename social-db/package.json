@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "automate": "sequelize-automate -c './config/sequelize-automate.config.json'",
+    "iniciate": "node index.js"
+}
+}
