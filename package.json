@@ -10,10 +10,7 @@
     "iniciate": "node index.js"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
     "axios": "^0.22.0",
->>>>>>> 017a9c66e239d6a616befa06bda79853982c9322
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",

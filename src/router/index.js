@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Grupos from '../views/Grupos.vue'
 import Perfil from '../views/Perfil.vue'
 import SignIn from '../views/Sign-in.vue'
+import SignUp from '../views/Sign-up.vue'
 import Timeline from '../views/Timeline.vue'
 import CreateAccount from '../views/CreateAccount.vue'
 
@@ -34,14 +35,11 @@ const routes = [
     path: '/create-account',
     name: 'CreateAccount',
     component: CreateAccount
-<<<<<<< HEAD
   },
   {
     path: '/sign-up',
     name: 'Sign-Up',
     component: SignUp
-=======
->>>>>>> 017a9c66e239d6a616befa06bda79853982c9322
   },
   {
     path: '/timeline',

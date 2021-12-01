@@ -6,11 +6,7 @@
             <input v-model="email" placeholder="email">
             <input v-model="senha" placeholder="senha">
             <a v-bind:href="'/forget-password/'">ish, esqueceu sua senha</a>
-<<<<<<< HEAD
-            <button class="button-light-blue">Log In</button>
-=======
             <button v-bind:href="'/post/'" class="button-light-blue">Log In</button>
->>>>>>> 017a9c66e239d6a616befa06bda79853982c9322
         </form>
     </section>
    
