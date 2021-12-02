@@ -36,9 +36,9 @@ export default {
             event.preventDefault();
 
             let dataCreate = {
-            userName: this.login.username,
-            email: this.login.email,
-            password: this.login.password,
+                userName: this.login.username,
+                email: this.login.email,
+                password: this.login.password,
             }
             this.$http.post("/user", dataCreate)
             .then(response =>{
