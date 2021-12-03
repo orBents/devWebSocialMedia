@@ -7,5 +7,5 @@ export default axios.create({
     Accept: "application/json",
     "Content-Type": "application/json",
   },
-  withCredentials: true,
+  withCredentials: false,
 });

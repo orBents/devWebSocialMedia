@@ -124,9 +124,8 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       alert(JSON.stringify(this.form));
-
       this.$http
-        .post("/user", this.form)
+        .post("/api/user", this.form)
         .then((response) => {
           // console.log(this.$router);
           console.log(response.data);

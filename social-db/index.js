@@ -7,8 +7,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
 //Configura as rotas dentro da aplicação express.
-app.use("/", routes);
+app.use("/api", routes);
 
 //Inicialização do servidor
 app.listen(8080, (request, response) =>{

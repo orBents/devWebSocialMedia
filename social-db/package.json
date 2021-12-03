@@ -2,5 +2,14 @@
   "scripts": {
     "automate": "sequelize-automate -c './config/sequelize-automate.config.json'",
     "iniciate": "node index.js"
-}
+  },
+  "name": "social-db",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }
