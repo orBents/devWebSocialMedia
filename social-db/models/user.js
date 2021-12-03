@@ -52,7 +52,7 @@ module.exports = sequelize => {
     isAdmin: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: null,
+      defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
       comment: null,
