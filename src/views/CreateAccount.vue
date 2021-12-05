@@ -38,7 +38,7 @@
       <b-form-group id="input-group-2" label-for="input-2">
         <b-form-input
           id="input-2"
-          v-model="form.name"
+          v-model="form.userName"
           placeholder="Usuário"
           required
         ></b-form-input>
@@ -113,8 +113,8 @@ export default {
   data() {
     return {
       form: {
+        userName: "",
         email: "",
-        name: "",
         password: null,
       },
       show: true,

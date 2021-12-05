@@ -1,5 +1,8 @@
 <template>
-  <h1>Hello</h1>
+   <section class="main-sign-in">
+    <h1>Log In</h1>
+    
+  </section>
 </template>
 
 <script>
