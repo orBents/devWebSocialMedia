@@ -7,7 +7,7 @@ const app = express();
 
 //Habilita o middleware que converte o corpo da requisição para JSON
 app.use(express.json());
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:8080" }));
 
 
 //Configura as rotas dentro da aplicação express.

@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Login",
   data() {
@@ -26,8 +28,8 @@ export default {
     doLogin(event) {
       event.preventDefault();
       
-      this.$http
-        .post("/api/login", this.login) //substituir depois por this.login
+      axios
+        .post("http://localhost:3030/api/login", this.login) //substituir depois por this.login
         .then((response) => {
           console.log(response.data);
           console.log(response);

@@ -5,6 +5,8 @@ import axios from "axios";
 import api from './api.js';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import VueCookies from "vue-cookies";
+import cors from "cors"
+
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css';
@@ -18,6 +20,9 @@ Vue.use(IconsPlugin);
 
 //use cookies doLogin
 Vue.use(VueCookies);
+
+Vue.use(cors);
+
 
 // $ é uma convenção que o Vue usa para indicar que aquela
 //variavel estará diponível em todas as instâncias do Vue.
