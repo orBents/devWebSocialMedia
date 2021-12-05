@@ -1,4 +1,3 @@
-import axios from "axios";
 const express = require("express");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
@@ -9,6 +8,7 @@ const app = express();
 
 //getting the local authentication type
 const LocalStrategy = require("passport-local").Strategy;
+
 
 app.use(express.json());
 // app.use(cors());
@@ -23,18 +23,22 @@ app.use(
   })
 );
 
+
 let users = [
   {
-    id: 1,
-    user: "Usuário 1",
-    email: "user@email.com",
-    pwd: "123",
+    id: 7,
+    email: "mail@san",
+    password: "Caloi",
   },
   {
-    id: 2,
-    name: "Emma",
-    email: "emma@email.com",
-    pwd: "password2",
+    id: 11,
+    email: "jak@jak",
+    password: "jak",
+  },
+  {
+    id: 12,
+    email: "gus@gu",
+    password: "gu",
   },
 ];
 
@@ -48,19 +52,9 @@ passport.use(
 
     (username, password, done) => {
       console.log(username + " - " + password);
-      
-      let user = this.axios
-        .get("http://localhost:8080/api/user") //substituir depois por this.login
-        .then((response) => {
-          console.log(response.data);
-          console.log(response);
-          this.$router.push("/");
-        })
-        .catch((error) => {
-          console.log(error)
-          console.error("Não foi possível realizar o Login");
-          console.error(error);
-        });
+      let user = users.find((user) => {
+        return user.email === username && user.password === password;
+      });
 
       if (user) {
         done(null, user);

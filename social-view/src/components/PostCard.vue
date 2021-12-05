@@ -1,6 +1,6 @@
 <template>
   <section class="container-post-card">
-    <b-img :src="imgSrc" fluid-grow alt="Fluid-grow image"></b-img>
+    <b-img :src="image" fluid-grow alt="Fluid-grow image"></b-img>
     <div class="post-category">
       <span>{{ postCategory }}</span>
     </div>
@@ -29,10 +29,22 @@
 import "@/assets/css/main.css";
 export default {
   name: "PostCard",
+  data() {
+    return {
+      post: {
+        description: "",
+        image: "",
+        user: "",
+        likes: "",
+        commentIds: "",
+        postCategory: "",
+      },
+    };
+  },
   props: {
     title: String,
     description: String,
-    imgSrc: String,
+    image: String,
     user: String,
     likes: Number,
     commentIds: Array,

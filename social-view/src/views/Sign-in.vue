@@ -27,11 +27,11 @@ export default {
       event.preventDefault();
       
       this.$http
-        .post("/api/user", this.login) //substituir depois por this.login
+        .post("/api/login", this.login) //substituir depois por this.login
         .then((response) => {
           console.log(response.data);
           console.log(response);
-          this.$router.push("/");
+          this.$router.push("/timeline");
         })
         .catch((error) => {
           console.error("Não foi possível realizar o Login");
