@@ -64,7 +64,7 @@
         :modalTarget="editModal.id"
       ></PostCard>
     </b-modal>
-  </div>
+  
 </section>
 </template>
 
