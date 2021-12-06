@@ -1,9 +1,10 @@
 <template>
   <section class="container-main">
-    <b-button @click="createPostModal()" variant="success">
+    <!--
+    <b-button @click="createPostModal()" variant="success" class="icon-post">
       <b-icon icon="camera"></b-icon>
     </b-button>
-
+    -->
     <section v-if="errored">
       <p>Não estamos conseguindo acessar sua timeline no momento!</p>
     </section>
@@ -24,32 +25,33 @@
       >
       <div v-if="loading">Carregando...</div>
 
-      <section class="container-timeline">
-        <ul id="example-1">
-          <li v-for="item in posts" :key="item.postId">
-            <div>
-              <b-card
-                tag="article"
-                style="max-width: 20rem;"
-                class="mb-2"
-              >
-                <b-card-text v.text="item.title">
-                </b-card-text>
-
-                <b-button icon="edit" variant="primary"></b-button>
-              </b-card>
+      <section class="container-post-card">
+        <ul>
+          <li v-for="item in posts" :key="item.userId">
+            <div class="container-post-card">
+              <p>{{ item.title }}</p>
+              <img v-bind:src="item.image" style="max-width: 550px;">
+              <p>{{item.likes}} likes</p>
+              <p>data de publicação: {{ item.datePublished }}</p>
+              <hr style="color: white;" />
             </div>
           </li>
         </ul>
       </section>
+      <!--<PostCard></PostCard> -->
     </div>
   </section>
 </template>
 
 <script>
+//import PostCard from "@/components/PostCard";
 // import axios from "axios";
+
 export default {
   name: "Timeline",
+  /*components: {
+    PostCard
+  },*/
   data() {
     return {
       posts: [],
@@ -156,5 +158,16 @@ export default {
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 0 2%;
+}
+.container-post-card {
+  width: 100%;
+  padding: 0 18px;
+  margin: 6rem 0;
+  position: relative;
+}
+
+.icon-post {
+  border: 1px solid grey;
+  background: white;
 }
 </style>

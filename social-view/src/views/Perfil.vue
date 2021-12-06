@@ -72,7 +72,7 @@
               </div>
             </div>
           </b-tab>
-          <b-tab title="One">
+          <b-tab title="Postar">
             <div class="account-posts-single">
               <div>
                 <post-card

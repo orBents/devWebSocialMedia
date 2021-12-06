@@ -8,9 +8,6 @@
         <b-nav-item to="/grupos" class="item"
           ><b-icon icon="people-fill"></b-icon
         ></b-nav-item>
-        <b-nav-item @click="createPost()" class="item"
-          ><b-icon icon="camera"></b-icon
-        ></b-nav-item>
         <b-nav-item to="/post" class="item"
           ><b-icon icon="heart-fill"></b-icon
         ></b-nav-item>
@@ -36,7 +33,7 @@ export default {
 
 <style>
 .bottom-header {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   border: 1px solid grey;
