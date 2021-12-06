@@ -47,7 +47,7 @@ export default {
 <style>
 .main-sign-in {
   background-color: #212530;
-  height: 95vh;
+  height: 100vh;
   width: 100%;
   display: flex !important;
   flex-flow: column;

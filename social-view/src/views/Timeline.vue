@@ -1,5 +1,6 @@
 <template>
   <section class="container-main">
+    <h1>SocialPost</h1>
     <Menu></Menu>
     <!--
     <b-button @click="createPostModal()" variant="success" class="icon-post">
