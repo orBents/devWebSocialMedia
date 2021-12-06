@@ -60,6 +60,8 @@ export default {
       image: String,
       datePublished: String,
       likes: Number,
+      profileId: Number,
+      groupId: Number,
     },
     modalTarget: String,
     callback: Function,
@@ -68,8 +70,12 @@ export default {
     return {
       editPostData: {
         post_model: {
-          title: "title",
+          title: "",
           image: "",
+          datePublished: "",
+          likes: "",
+          profileId: "5",
+          groupId: "",
           //endereco: "" Ainda não envia!
         },
       },
@@ -81,14 +87,29 @@ export default {
       this.editPostData.post_model.image = this.evento.image;
       this.editPostData.post_model.datePublished = new Date();
       this.editPostData.post_model.likes = this.evento.likes;
+      this.editPostData.post_model.profileId = this.evento.profileId;
+      this.editPostData.post_model.groupId = this.evento.groupId;
     }
     //this.post_model.endereco = Object.assign({}, this.evento.endereco);
   },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-
-      this.callback(evt, this.editPostData);
+      console.log(this.editPostData)
+      event.preventDefault();
+      alert(JSON.stringify(this.editPostData));
+      this.$http
+        .post("/api/post", this.editPostData)
+        .then((response) => {
+          // console.log(this.$router);
+          console.log(response.data);
+          this.$router.push("/timeline");
+        })
+        .catch((errors) => {
+          console.log("Falha na criação!");
+          alert("Falha na criação!");
+          console.log(errors);
+        });
       this.$emit("exit", true);
 
       // const url = "https://1d92fc4d-d759-40d0-9b59-369a1c08a054.mock.pstmn.io/";

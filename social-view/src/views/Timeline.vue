@@ -59,7 +59,6 @@
     >
       <PostCard
         @exit="closeModal"
-        :evento="editModal.content"
         :callback="editModal.callback"
         :modalTarget="editModal.id"
       ></PostCard>
@@ -86,7 +85,8 @@ export default {
         image: "Edite o link da imagem",
         datePublished: "2020-11-02",
         likes: "43",
-        profileId: "01",
+        profileId: "5",
+        groupId: "",
         callback: "",
         eventoCreated: false,
         eventoEdited: false,
@@ -102,7 +102,6 @@ export default {
     },
     createPostModal() {
       this.editModal.title = "Crie um novo Post";
-     
       //Callback para enviar o evento via POST
       this.editModal.callback = (event, data) => {
         this.$http
@@ -110,9 +109,6 @@ export default {
           .then(response => {
             //if (response.data.nome === data.editEventoData.nome) {
             console.log("Criado com sucesso!", response.data);
-            this.editModal.eventoCreated = true;
-            //this.mounted();
-            //}
           })
           .catch(error => {
             console.log(error);
@@ -120,15 +116,13 @@ export default {
           })
           .finally(() => {});
       };
-
+      this.editModal.eventoCreated = true;
       this.$root.$emit("bv::show::modal", this.editModal.id);
     },
 
     editEventoModal(evento) {
       //this.editModal.content = JSON.stringify(evento);
       this.editModal.title = 'Edite o post "' + evento.nome + '"';
-     
-
       //Callback para editar o evento via PUT
       this.editModal.callback = (event, data) => {
         this.$http
@@ -145,7 +139,6 @@ export default {
           })
           .finally(() => {});
       };
-
       this.$root.$emit("bv::show::modal", this.editModal.id);
     },
 
