@@ -1,5 +1,6 @@
 <template>
   <section class="container-main">
+    <Menu></Menu>
     <!--
     <b-button @click="createPostModal()" variant="success" class="icon-post">
       <b-icon icon="camera"></b-icon>
@@ -25,33 +26,40 @@
       >
       <div v-if="loading">Carregando...</div>
 
-      <section class="container-post-card">
-        <ul>
-          <li v-for="item in posts" :key="item.userId">
-            <div class="container-post-card">
-              <p>{{ item.title }}</p>
-              <img v-bind:src="item.image" style="max-width: 550px;">
-              <p>{{item.likes}} likes</p>
-              <p>data de publicação: {{ item.datePublished }}</p>
-              <hr style="color: white;" />
-            </div>
-          </li>
-        </ul>
-      </section>
+      <ul>
+        <li v-for="item in posts" :key="item.userId">
+          <section class="container-post-card">
+            <b-card class="mb-1" style="background-color: #212532;">
+              <img v-bind:src="item.image" fluid-grow alt="Fluid-grow image" />
+              <div class="post-infos">
+                <span class="bold">{{ item.title }}</span>
+                <div class="post-reactions">
+                  <b-icon icon="heart" font-scale="2" variant="light"></b-icon>
+                  <p>{{ item.likes + " Likes" }}</p>
+                </div>
+                <p>date: {{ item.datePublished }}</p>
+              </div>
+            </b-card>
+          </section>
+        </li>
+      </ul>
+
       <!--<PostCard></PostCard> -->
     </div>
   </section>
 </template>
 
 <script>
+import Menu from "@/components/Menu.vue";
+
 //import PostCard from "@/components/PostCard";
 // import axios from "axios";
 
 export default {
   name: "Timeline",
-  /*components: {
-    PostCard
-  },*/
+  components: {
+    Menu,
+  },
   data() {
     return {
       posts: [],
@@ -169,5 +177,23 @@ export default {
 .icon-post {
   border: 1px solid grey;
   background: white;
+}
+img {
+  width: 450px;
+}
+
+.post-infos p {
+  font-size: 20px;
+}
+.post-reactions {
+}
+.post-reactions b-icon {
+  height: 18px;
+}
+li {
+  list-style-type: none;
+}
+.mb-2 {
+  background-color: aquamarine;
 }
 </style>

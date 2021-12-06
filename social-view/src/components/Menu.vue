@@ -8,9 +8,6 @@
         <b-nav-item to="/grupos" class="item"
           ><b-icon icon="people-fill"></b-icon
         ></b-nav-item>
-        <b-nav-item to="/post" class="item"
-          ><b-icon icon="heart-fill"></b-icon
-        ></b-nav-item>
         <b-nav-item to="/perfil" class="item"
           ><b-icon icon="person-circle"></b-icon
         ></b-nav-item>

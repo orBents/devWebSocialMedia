@@ -1,29 +1,6 @@
 <template>
   <!--
-  <section class="container-post-card">
-    <b-img :src="image" fluid-grow alt="Fluid-grow image"></b-img>
-    <div class="post-category">
-      <span>{{ postCategory }}</span>
-    </div>
-    <div class="post-reactions">
-      <b-icon icon="heart" font-scale="2" variant="light"></b-icon>
-      <b-icon icon="chat-square" font-scale="2" variant="light"></b-icon>
-    </div>
-    <div class="post-infos">
-      <p>{{ likes + " Likes" }}</p>
-      <span class="bold">{{ user + " " }}</span>
-      <span>{{ description }}</span>
-    </div>
-    <div class="post-add-comment">
-      <b-form-input
-        v-model="comment"
-        placeholder="Add comment..."
-      ></b-form-input>
-      <b-button variant="outline-primary"
-        ><b-icon icon="arrow-down-square"></b-icon
-      ></b-button>
-    </div>
-  </section>
+  
   -->
   <section class="container-post-card">
     <div>

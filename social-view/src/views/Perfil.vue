@@ -1,5 +1,6 @@
 <template>
   <section class="container-main">
+    <Menu></Menu>
     <section class="container-account">
       <section class="account-header">
         <b-avatar
@@ -109,9 +110,13 @@
 <script>
 import "@/assets/css/main.css";
 import PostCard from "../components/PostCard";
+import Menu from "@/components/Menu.vue"
 export default {
   name: "Perfil",
-  components: { PostCard },
+  components: { 
+    PostCard,
+    Menu },
+
 };
 </script>
 
@@ -132,7 +137,7 @@ export default {
   background: #555;
 }
 .container-account {
-  width: 100%;
+  max-width: 100%;
   height: 100%;
   max-height: 100%;
   overflow-y: scroll;
@@ -142,7 +147,6 @@ export default {
 
 .account-header {
   width: 100%;
-
   margin-top: 120px;
   display: flex;
   justify-content: flex-start;

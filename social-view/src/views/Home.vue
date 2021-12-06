@@ -85,5 +85,6 @@ export default {
 .main p {
   font-weight: 400;
   font-size: 1rem;
+  text-align: center;
 }
 </style>
