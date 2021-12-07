@@ -43,8 +43,7 @@ export default {
 .post-reactions {
   display: flex;
   justify-content: space-between;
-  width: 100px;
-  margin: 2rem 0;
+  width: 120px;
 }
 .post-infos {
   text-align: left;
