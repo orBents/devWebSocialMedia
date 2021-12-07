@@ -6,6 +6,7 @@ import Perfil from '../views/Perfil.vue'
 import SignIn from '../views/Sign-in.vue'
 import Timeline from '../views/Timeline.vue'
 import CreateAccount from '../views/CreateAccount.vue'
+import Publish from '../views/Publish.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/timeline',
     name: 'Timeline',
     component: Timeline
+  },
+  {
+    path: '/publicar',
+    name: 'Publish',
+    component: Publish
   },
   
 ]

@@ -83,22 +83,7 @@
                   likes="100"
                 ></post-card>
               </div>
-              <div>
-                <post-card
-                  imgSrc="https://www.citybreak.com/sites/cb_citybreak/files/styles/slide_large/public/ben-o-bro-wpU4veNGnHg-unsplash.jpg?h=41f55a5b&itok=xr1okfZF"
-                  user="username"
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntsed do eiusmod tempor incididunt... more "
-                  likes="100"
-                ></post-card>
-              </div>
-              <div>
-                <post-card
-                  imgSrc="https://comparaplano.com.br/wp-content/uploads/2019/09/dog-tv.png"
-                  user="username"
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntsed do eiusmod tempor incididunt... more "
-                  likes="100"
-                ></post-card>
-              </div>
+              
             </div>
           </b-tab>
         </b-tabs>
@@ -140,8 +125,6 @@ export default {
   max-width: 100%;
   height: 100%;
   max-height: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
   padding: 0 5%;
 }
 

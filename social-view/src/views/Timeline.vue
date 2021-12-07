@@ -47,6 +47,28 @@
 
       <!--<PostCard></PostCard> -->
     </div>
+
+    <ul>
+      <li>
+        <section class="container-post-card">
+          <b-card class="mb-1" style="background-color: #212532;">
+            <img
+              src="https://static.todamateria.com.br/upload/58/45/5845613f4b7d9-o-que-e-paisagem.jpg"
+              fluid-grow
+              alt="Fluid-grow image"
+            />
+            <div class="post-infos">
+              <span class="bold">nome do post</span>
+              <div class="post-reactions">
+                <b-icon icon="heart" font-scale="2" variant="light"></b-icon>
+                <p>55 Likes</p>
+              </div>
+              <p>date: 02/02/2000</p>
+            </div>
+          </b-card>
+        </section>
+      </li>
+    </ul>
   </section>
 </template>
 
@@ -186,10 +208,18 @@ img {
 .post-infos p {
   font-size: 20px;
 }
+
+.post-infos span {
+  line-height: 2.5;
+}
+.card-body {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
 .post-reactions {
+  display: flex;
 }
 .post-reactions b-icon {
-  height: 18px;
+  height: 16px;
 }
 li {
   list-style-type: none;
