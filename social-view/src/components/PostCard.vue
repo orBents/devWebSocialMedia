@@ -4,11 +4,11 @@
     <div class="post-category">
       <span>{{ postCategory }}</span>
     </div>
-    <div class="post-reactions">
+    <div class="post-card-reactions">
       <b-icon icon="heart" font-scale="2" variant="light"></b-icon>
       <b-icon icon="chat-square" font-scale="2" variant="light"></b-icon>
     </div>
-    <div class="post-infos">
+    <div class="post-infos-card">
       <p>{{ likes + " Likes" }}</p>
       <span class="bold">{{ user + " " }}</span>
       <span>{{ description }}</span>
@@ -48,19 +48,21 @@ export default {
   margin: 6rem 0;
   position: relative;
 }
-.post-reactions {
+.post-card-reactions {
   display: flex;
   justify-content: space-between;
   width: 120px;
+  margin: 1rem 0;
 }
 
-.post-infos {
+.post-infos-card {
   text-align: left;
   margin: 0 0 1rem 0;
 }
-.post-infos span,
+.post-infos-card span,
 p {
   font-size: 1.5rem;
+  line-height: 1.2;
 }
 .post-add-comment {
   display: flex;
